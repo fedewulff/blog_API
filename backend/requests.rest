@@ -1,0 +1,26 @@
+GET http://localhost:9000/posts
+
+###
+POST http://localhost:9000/admin/signup
+Content-Type: application/json
+
+{
+    "username":"fede",
+"password":"feeee12",
+"confirmPassword":"feeee12"
+}
+
+###
+POST http://localhost:9000/admin/login
+Content-Type: application/json
+
+{
+    "username":"fede",
+"password":"feeee12"
+
+}
+
+###
+GET http://localhost:9000/admin
+
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzQ2MjE3NTA2LCJleHAiOjE3NDYyMTg0MDZ9.ZcLZKlOvex_1OqO8b4ZRRDlGYycBnBPXf8ImZ_8QLJE
