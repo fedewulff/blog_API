@@ -1,0 +1,103 @@
+.backButton {
+  color: #f8b55f;
+  background: none;
+  border: none;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.singlePostContainer {
+  padding: 0.75rem 3rem;
+}
+
+.singlePostButtons {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  margin-bottom: 1.5rem;
+  margin-top: 4rem;
+}
+
+.deletePostButton,
+.updatePostButton {
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  border: none;
+  font-size: 1.25rem;
+  color: #f7f7f3;
+  font-weight: 700;
+  letter-spacing: 0.125rem;
+  cursor: pointer;
+}
+.deletePostButton {
+  background: #c4202b;
+}
+.updatePostButton {
+  background: #0d791f;
+}
+
+.singlePost {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0px 10px 10px #08070c;
+  transition: 0.3s;
+  color: #444444;
+  text-decoration: none;
+  width: 70%;
+  margin: auto;
+}
+
+.singlePostYellow {
+  background: #f8b55f;
+}
+.singlePostTitle {
+  font-size: 1.75rem;
+  padding: 0.5rem 0.75rem;
+}
+
+.createdAtAndPublicSinglePost {
+  padding: 0.25rem 0.75rem;
+  display: flex;
+  justify-content: space-between;
+}
+.publicSinglePost {
+  color: #3f9b0b;
+  font-weight: 700;
+}
+.notPublicSinglePost {
+  color: #e41b17;
+  font-weight: 700;
+}
+.singlePostText {
+  background: #f7f7f3;
+  font-size: 1.25rem;
+  padding: 1.5rem 0.75rem;
+  flex-grow: 1;
+}
+/*DIVIDER*/
+.divider {
+  background: #f7f7f3;
+}
+.dividerDiv {
+  background: rgb(165, 160, 160);
+  height: 1px;
+  width: 90%;
+  margin: auto;
+}
+
+/*COMMENTS*/
+.commentsContainer {
+  padding: 1.5rem 0.75rem;
+  border: none;
+  font-size: 1.25rem;
+  background: #f7f7f3;
+}
+.noComments {
+  margin: 1.5rem auto;
+  width: fit-content;
+}

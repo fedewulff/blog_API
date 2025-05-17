@@ -9,6 +9,8 @@ const validateSignUp = [
     .trim()
     .notEmpty()
     .withMessage("Username cannot be empty")
+    .isLength({ min: 2, max: 20 })
+    .withMessage(`Username has to be between 2 and 20 characters long`)
     .custom(async (username) => {
       const user = await prisma.user.findUnique({
         where: {
@@ -23,8 +25,8 @@ const validateSignUp = [
     .trim()
     .notEmpty()
     .withMessage(`Password cannot be empty`)
-    .isLength({ min: 8 })
-    .withMessage(`Password has to be at least 8 characters long`),
+    .isLength({ min: 8, max: 30 })
+    .withMessage(`Password has to be between 2 and 30 characters long`),
   body("confirmPassword")
     .trim()
     .notEmpty()
@@ -35,8 +37,18 @@ const validateSignUp = [
       }
       return value === req.body.password;
     })
-    .isLength({ min: 8 })
-    .withMessage(`Confirmation password has to be at least 8 characters long`),
+    .isLength({ min: 8, max: 30 })
+    .withMessage(`Password has to be between 2 and 30 characters long`),
+  body("code")
+    .trim()
+    .notEmpty()
+    .withMessage(`Code cannot be empty`)
+    .custom((value) => {
+      if (value !== process.env.ADMIN_CODE) {
+        throw new Error("Code is not valid");
+      }
+      return value === process.env.ADMIN_CODE;
+    }),
 ];
 exports.adminSignUpPost = [
   validateSignUp,
@@ -52,6 +64,7 @@ exports.adminSignUpPost = [
         data: {
           username: username,
           password: hashedPassword,
+          isAdmin: true,
         },
       });
       res.json("Sign up succesful");

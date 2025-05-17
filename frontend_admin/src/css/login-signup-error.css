@@ -1,0 +1,93 @@
+body {
+  background: #3d365c;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.vertical {
+  display: flex;
+  flex-direction: column;
+}
+
+.formContainer form {
+  max-width: 30%;
+  margin-top: 6rem;
+  gap: 2rem;
+  padding: 3rem 2.5rem;
+  color: #fffefa;
+  border-radius: 2rem;
+  box-shadow: inset 10px 10px 19px #2c2742, inset -10px -10px 19px #4e4576;
+  font-size: 2rem;
+}
+
+.formContainer input {
+  margin-top: 0.25rem;
+  font-size: 2rem;
+  border-radius: 0.75rem;
+  border: none;
+  background: #fffefa;
+  padding: 0.175rem;
+  color: #3d365c;
+}
+
+.formContainer button {
+  padding-bottom: 0.25rem;
+  font-size: 2rem;
+  margin-top: 2rem;
+  border-radius: 0.75rem;
+  border: none;
+  background: #f8b55f;
+  color: #3d365c;
+  cursor: pointer;
+}
+
+.backToLogin {
+  margin-top: 2.25rem;
+  color: #f8b55f;
+  text-decoration: none;
+  font-size: 2rem;
+  border-radius: 0.75rem;
+  padding: 0rem 0.25rem;
+}
+
+.or {
+  font-size: 1.75rem;
+  margin: 2.25rem;
+  color: #fffefa;
+}
+
+.signupButton {
+  color: #f8b55f;
+  text-decoration: none;
+  font-size: 3rem;
+  border-radius: 0.75rem;
+  padding: 0rem 0.25rem;
+}
+
+.loginError {
+  height: 1rem;
+  font-size: 1rem;
+  color: #f8b55f;
+}
+
+/*ERROR*/
+.errorPage {
+  padding: 0.5rem;
+}
+.errorPage h1 {
+  color: #fffefa;
+  padding: 0.25rem;
+}
+
+.formContainer input:focus-visible {
+  outline: 0.25rem solid #f8b55f;
+}
+.formContainer button:focus-visible,
+.backToLogin:focus-visible,
+.signupButton:focus-visible {
+  outline: 0.25rem solid #fffefa;
+}
