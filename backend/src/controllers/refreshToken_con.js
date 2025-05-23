@@ -1,20 +1,21 @@
-const prisma = require("../prisma_client/prisma_client");
-const jwt = require("jsonwebtoken");
+const prisma = require("../prisma_client/prisma_client")
+const jwt = require("jsonwebtoken")
 
 module.exports.handleRefreshToken = async (req, res) => {
-  if (!req.cookies.jwt) return res.sendStatus(401);
-  const refreshToken = req.cookies.jwt;
+  if (!req.cookies.jwt) return res.sendStatus(401)
+  const refreshToken = req.cookies.jwt
   const userExists = prisma.user.findUnique({
     where: {
       refreshToken: refreshToken,
     },
-  });
-  if (!userExists) return res.sendStatus(403);
+  })
+  if (!userExists) return res.sendStatus(403)
   jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
-    if (err) return res.sendStatus(403); //FORBIDDEN
+    if (err) return res.sendStatus(403) //FORBIDDEN
     const accessToken = jwt.sign({ id: user.id }, process.env.ACCESS_TOKEN_SECRET, {
-      expiresIn: "15m",
-    });
-    res.json({ accessToken: accessToken });
-  });
-};
+      expiresIn: "5s",
+    })
+    //console.log(accessToken)
+    res.json({ accessToken: accessToken })
+  })
+}

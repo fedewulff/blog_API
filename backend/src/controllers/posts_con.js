@@ -27,7 +27,7 @@ exports.createPost = async (req, res) => {
       text: req.body.text,
       createdAt: todayDate,
       public: req.body.publish,
-      userId: req.body.userId,
+      userId: req.user,
     },
   })
   res.json({

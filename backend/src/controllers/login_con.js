@@ -23,7 +23,7 @@ module.exports.adminLogInPost = async (req, res) => {
 
   // generate tokens
   const accessToken = jwt.sign({ id: user.id }, process.env.ACCESS_TOKEN_SECRET, {
-    expiresIn: "15m",
+    expiresIn: "5s",
   })
   const refreshToken = jwt.sign({ id: user.id }, process.env.REFRESH_TOKEN_SECRET, {
     expiresIn: "7d",

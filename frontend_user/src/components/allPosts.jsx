@@ -1,17 +1,17 @@
 import { useState, useEffect } from "react"
 import { NavLink } from "react-router"
 
-function AllPosts({ renderPosts, accessToken, refreshToken }) {
+function AllPosts() {
   const [postsArray, setPostsArray] = useState([])
   const [error, setError] = useState(``)
   const [loading, setLoading] = useState(true)
 
-  console.log("all posts: ", accessToken)
+  //console.log("all posts: ", accessToken)
   useEffect(() => {
-    getAllPosts(accessToken)
-  }, [accessToken, renderPosts])
+    getAllPosts()
+  }, [])
 
-  async function getAllPosts(value) {
+  async function getAllPosts() {
     try {
       const response = await fetch("http://localhost:9000/posts", {
         headers: {
@@ -41,7 +41,8 @@ function AllPosts({ renderPosts, accessToken, refreshToken }) {
       <div className="grid">
         {postsArray.map((post) => {
           return (
-            <NavLink to={`/admin-profile/post/${post.id}`} className="gridPost" key={post.id} state={{ accessToken: accessToken }}>
+            // <div key={post.id}>{post.title}</div>
+            <div className="gridPost" key={post.id}>
               <div className="gridPostYellow ">
                 {post.title.length >= 60 && <h2 className="gridPostTitle">{post.title.slice(0, 50)}...</h2>}
                 {post.title.length < 60 && <h2 className="gridPostTitle">{post.title}</h2>}
@@ -53,7 +54,7 @@ function AllPosts({ renderPosts, accessToken, refreshToken }) {
               </div>
               {post.text.length >= 200 && <div className="gridPostText">{post.text.slice(0, 200)}...</div>}
               {post.text.length < 200 && <div className="gridPostText">{post.text}</div>}
-            </NavLink>
+            </div>
           )
         })}
       </div>

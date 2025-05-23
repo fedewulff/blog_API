@@ -13,19 +13,19 @@ routes.get("/posts", posts_con.getAllPosts)
 //GET SINGLE POST
 routes.get("/posts/:postId", posts_con.getPost)
 //CREATE POST
-routes.post("/posts", posts_con.createPost)
+routes.post("/posts", authenticateToken, posts_con.createPost)
 //UPDATE POST
-routes.put("/posts/:postId", posts_con.updatePost)
+routes.put("/posts/:postId", authenticateToken, posts_con.updatePost)
 //DELETE POST
-routes.delete("/posts/:postId", posts_con.deletePost)
+routes.delete("/posts/:postId", authenticateToken, posts_con.deletePost)
 //CREATE COMMENT
 routes.post("/posts/:postId/comments", comments_con.createComment)
 //DELETE COMMENT
-routes.delete("/posts/:postId/comments/:commentId", comments_con.deleteComment)
+routes.delete("/posts/:postId/comments/:commentId", authenticateToken, comments_con.deleteComment)
 //ADMIN LOGIN
 routes.post("/admin/login", login_con.adminLogInPost)
 //ADMIN PROFILE
-routes.get("/admin/profile", authenticateToken, login_con.adminProfile)
+//routes.get("/admin/profile", authenticateToken, login_con.adminProfile)
 //GET REFRESH TOKEN
 routes.get("/admin/refresh", refreshToken_con.handleRefreshToken)
 //ADMIN SIGNUP

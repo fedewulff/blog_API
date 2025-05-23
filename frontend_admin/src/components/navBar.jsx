@@ -1,12 +1,13 @@
-import { useState } from "react";
-import { NavLink } from "react-router";
-import "../css/profile.css";
+import { useState } from "react"
+import { NavLink, useNavigate } from "react-router"
+import "../css/profile.css"
 
 function NavBar({ eraseAccessToken, showFormFunction }) {
-  const [error, setError] = useState(``);
+  const navigate = useNavigate()
+  const [error, setError] = useState(``)
 
   async function logOut() {
-    eraseAccessToken("logout");
+    eraseAccessToken("logout")
 
     try {
       await fetch("http://localhost:9000/admin/logout", {
@@ -15,15 +16,16 @@ function NavBar({ eraseAccessToken, showFormFunction }) {
           "Content-Type": "application/json",
         },
         credentials: "include",
-      });
+      })
       //navigate("/");
     } catch (error) {
-      setError(error);
+      setError(error)
     }
+    navigate("/", { state: null })
   }
 
   if (error) {
-    return <div>Couldn't fetch API</div>;
+    return <div>Couldn't fetch API</div>
   }
 
   return (
@@ -41,7 +43,7 @@ function NavBar({ eraseAccessToken, showFormFunction }) {
         LOG OUT
       </button>
     </div>
-  );
+  )
 }
 
-export default NavBar;
+export default NavBar
